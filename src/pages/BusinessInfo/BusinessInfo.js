@@ -6,12 +6,12 @@ import {
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
-  selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+  selectBusinessInfo,
+} from './BusinessInfoSlice';
+import styles from './BusinessInfo.module.css';
 
-export function Counter() {
-  const count = useSelector(selectCount);
+export function BusinessInfo() {
+  const count = useSelector(selectBusinessInfo);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
