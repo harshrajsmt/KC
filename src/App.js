@@ -16,10 +16,11 @@ import OwnerInfo from './pages/OwnerInfo';
 import ShareHolders from './pages/ShareHolders';
 import ShareHolderInfo from './pages/ShareHolderInfo';
 import AboutDirector from './pages/Director/AboutDirector';
+import MainHeader from './components/MainHeader';
 function App() {
   return (
     <>
-    <AboutDirector/>
+     <MainHeader/> 
     {/* <Router>
       <Routes>
         <Route exact path='/' element={ <FrontPage/> }></Route>
@@ -30,6 +31,7 @@ function App() {
         <Route path='/existbusinessinfo' element={ <ExistBusinessInfo/> }></Route>
         <Route path='/existingbusiness' element={ <ExistingBusiness/>  }></Route>
         <Route path='/ownerinfo' element={ <OwnerInfo/> }></Route>
+        <Route path='/aboutdirector' element={ <AboutDirector/> }></Route>
       </Routes>
     </Router> */}
     </>
