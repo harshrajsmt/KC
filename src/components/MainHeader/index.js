@@ -4,13 +4,14 @@ import { BiMessage } from 'react-icons/bi';
 import { Layout, Col, Row, Input, Menu } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import style from './MainHeader.module.less'
+import DashboardHeader from '../DashboardHeader';
 const { Header, Content} = Layout;
 const { Search } = Input;
 const suffix = (
     <CaretDownOutlined 
       style={{
-        fontSize: 16,
-        color: '#1890ff',
+        fontSize: 25,
+        color: '#00ac8c',
       }}
     />
   );
@@ -34,6 +35,13 @@ const MainHeader = () => {
                     <Menu.Item key="6" ><div className={style.logoCircle}></div></Menu.Item>
                 </Menu>
              </Header>
+             <Row justify='center'>
+               <Col xl={20} lg={20}>
+                  <Content style={{marginTop:'100px'}}>
+                    <DashboardHeader/>
+                  </Content>
+               </Col>
+             </Row>
         </Layout>
     )
 }
