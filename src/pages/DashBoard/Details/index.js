@@ -5,7 +5,7 @@ import style from './Details.module.less'
 import { Col, Row, Card, Button, Select, Table} from 'antd';
 const { Option } = Select;
 
-const columns = [
+const shareHolderColumns = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -23,7 +23,7 @@ const columns = [
         dataIndex: 'Action',
       },
   ];
-  const data = [
+  const shareHolderData = [
     {
       key: '1',
       name: 'John Brown',
@@ -32,10 +32,66 @@ const columns = [
       Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash/></div>,
     }
   ];
+
+  const officersColumns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Nationality / Position held',
+      dataIndex: 'Nationality',
+    },
+    {
+      title: 'Date Of Appointment',
+      dataIndex: 'Appointment',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'Action',
+      },
+  ];
+  const officersData = [
+    {
+      key: '1',
+      name: 'John Brown',
+      Nationality: 'Singapore / Director',
+      Appointment: '18/01/2022',
+      Action:<div><MdModeEdit style={{marginRight:'10px'}}/> <IoMdTrash/></div>,
+    }
+  ];
+
+  const ShareCapitalColumns = [
+    {
+      title: 'Issued share capital amount',
+      dataIndex: 'amount',
+    },
+    {
+      title: 'Number of shares*',
+      dataIndex: 'sharesNo',
+    },
+    {
+      title: 'Currency',
+      dataIndex: 'Currency',
+    },
+    {
+        title: 'Share type',
+        dataIndex: 'ShareType',
+      },
+  ];
+  const  ShareCapitalData = [
+    {
+      key: '1',
+      amount: 10000,
+      sharesNo: 1000,
+      Currency: 'SDG',
+      ShareType:'Ordinary',
+    }
+  ];
 const Details = () => {
     return (
         <>
-             <Row justify='space-around'>
+             <Row justify='space-around' style={{backgroundColor:'#f7f7f7'}}>
                 <Col xl={15} lg={15} md={15} sm={22} xs={22}>
 
 
@@ -66,11 +122,24 @@ const Details = () => {
 
 
                     <Card title="Shareholders" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table columns={columns} dataSource={data} size="small" />
+                        <Table  columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
                     </Card>
 
                     <Card title="Officers / Authorised Representatives" className={style.Card} extra={<Button size='small'>Add</Button>} >
-                        <Table columns={columns} dataSource={data} size="small" />
+                        <Table bordered={false} columns={officersColumns} dataSource={officersData} size="small" />
+                    </Card>
+
+                    <Card title="Share capital" className={style.Card} extra={<Button size='small'>Add</Button>} >
+                        <Table pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                        <small>Number of shares including treasury shares*</small>
+                    </Card>
+
+                    <Card title="Paid-up capital" className={style.Card} extra={<Button size='small'>Add</Button>} >
+                        <Table pagination={false} bordered={false} columns={ShareCapitalColumns} dataSource={ShareCapitalData} size="small" />
+                    </Card>
+
+                    <Card title="Registered address" className={style.Card} style={{marginBottom:'50px'}} extra={<Button size='small'>Add</Button>} >
+                        <p>!51 Chin Swee Road Manhattan House 02-24 Singapore 169876</p>
                     </Card>
                 </Col >
 
@@ -96,7 +165,7 @@ const Details = () => {
                     </Card>
 
                     <Card className={style.Card} 
-                    style={{textAlign:'center'}}
+                    style={{textAlign:'center', marginBottom:'20px'}}
                     title="Change registered address">
                             <Col>
                                 <MdLocationPin style={{fontSize:'50px'}}/>

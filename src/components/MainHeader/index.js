@@ -19,14 +19,12 @@ const MainHeader = () => {
     return (
         <Layout>
              <Header style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor:'#00ac8c', overflow:'hidden' }}>
-                <Menu  style={{width:'35%',float:'left',borderBottom:'none', fontSize:"18px",fontWeight:'bold', color:'white', backgroundColor:'#00ac8c'}} mode='horizontal'>
+                <Menu  style={{width:'100%',float:'left',borderBottom:'none', fontSize:"18px",fontWeight:'bold', color:'white', backgroundColor:'#00ac8c'}} mode='horizontal'>
                     <Menu.Item>Kimbocorp</Menu.Item>
                     <Menu.Item>
                     <Search className={style.searchBox} placeholder="search" allowClear size='middle' suffix={suffix} />
 
                     </Menu.Item>
-                </Menu>
-                <Menu style={{float:'right', width:'65%',fontSize:"18px",fontWeight:'bold', color:'white', backgroundColor:'#00ac8c', borderBottom:'none'}} mode="horizontal" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1">Company</Menu.Item>
                     <Menu.Item key="2">Projects</Menu.Item>
                     <Menu.Item key="3"><div ><span className={style.opportunity}>Post of opportunity</span></div></Menu.Item>
@@ -35,7 +33,7 @@ const MainHeader = () => {
                     <Menu.Item key="6" ><div className={style.logoCircle}></div></Menu.Item>
                 </Menu>
              </Header>
-             <Row justify='center'>
+             <Row justify='center' style={{backgroundColor:'white'}}>
                <Col xl={20} lg={20}>
                   <Content style={{marginTop:'100px'}}>
                     <DashboardHeader/>
