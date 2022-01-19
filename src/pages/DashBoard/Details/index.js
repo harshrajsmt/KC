@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { MdModeEdit, MdLocationPin} from 'react-icons/md';
+import { AiFillCaretDown, AiFillInfoCircle} from 'react-icons/ai';
 import { IoMdTrash } from 'react-icons/io'; 
 import style from './Details.module.less'
-import { Col, Row, Card, Button, Select, Table} from 'antd';
+import { Col, Row, Card, Button, Select, Table, Modal, Form} from 'antd';
 const { Option } = Select;
 
 const shareHolderColumns = [
@@ -89,6 +90,20 @@ const shareHolderColumns = [
     }
   ];
 const Details = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+      setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+
     return (
         <>
              <Row justify='space-around' style={{backgroundColor:'#f7f7f7'}}>
@@ -101,7 +116,7 @@ const Details = () => {
                     </Card>
 
 
-                    <Card title="Business Activity" className={style.Card} extra={<Button size='small'>Edit</Button>} >
+                    <Card title="Business Activity" className={style.Card} extra={<Button size='small' onClick={showModal}>Edit</Button>} >
                         <Row justify='space-around'>
                             <Col xl={11} lg={11} md={11} sm={22} xs={22}>
                                 <Select bordered={false} className={style.select} placeholder='Primary Activity'>
@@ -119,7 +134,52 @@ const Details = () => {
                             </Col>
                         </Row>
                     </Card>
-
+                      <Modal visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
+                        <h2>Edit business activities</h2>
+                        <Form>
+                        <Form.Item
+                              name="Primary business activity"
+                              rules={[{ required: true, message: 'Please input your Activity!' }]}
+                            >
+                              <Col xl={22} lg={22} md={22} sm={22} xs={22}>
+                                <label>Primary business activity<AiFillInfoCircle/></label>
+                                <Select bordered={false} className={style.select} >
+                                    <Option value="one">Business Activity one</Option>
+                                    <Option value="two">Business Activity two</Option>
+                                    <Option value="three">Business Activity three</Option>
+                                </Select>
+                            </Col>
+                        </Form.Item>
+                        
+                        <Form.Item
+                              name="Secondary business activity"
+                              rules={[{ required: true, message: 'Please input your Activity!' }]}
+                            >
+                              <Col xl={22} lg={22} md={22} sm={22} xs={22}>
+                                <label>Secondary business activity<AiFillInfoCircle/></label>
+                                <Select bordered={false} className={style.select} >
+                                    <Option value="one">Business Activity one</Option>
+                                    <Option value="two">Business Activity two</Option>
+                                    <Option value="three">Business Activity three</Option>
+                                </Select>
+                            </Col>
+                        </Form.Item>
+                        <p>What will happen next?</p>
+                        <p>1. We will contact you directly to confirm the amendment</p>
+                        
+                          <Form.Item>
+                          <Row style={{marginTop:'50px'}}>
+                            <Col xl={12} lg={12} md={12} sm={12} xs={12}>
+                              <a href='#'>Contcat Us</a>
+                            </Col>
+                            <Col xl={12} lg={12} md={12} sm={12} xs={12}>
+                              <Button type='primary' htmlType="submit" style={{backgroundColor:'#7f0419'}}>Agree and submit</Button>
+                            </Col>
+                          </Row>
+                          </Form.Item>
+                        
+                        </Form>
+                      </Modal>
 
                     <Card title="Shareholders" className={style.Card} extra={<Button size='small'>Add</Button>} >
                         <Table  columns={shareHolderColumns} dataSource={shareHolderData} size="small" />
